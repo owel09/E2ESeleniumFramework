@@ -10,6 +10,13 @@ import java.util.concurrent.TimeUnit;
 
 /*
  *Created by Work on 13/8/2021 7:21 PM
+ * declare public Webdriver para makita ng lahat ng class at matawag
+ * declare Properties instance
+ * declare FileInputStream, path is src/main/resources/data.properties
+ * connect mo yung properties at fis gamit yung prop.load
+ * declare String browserName getProperty kasi gagamitin natin yan sa IF
+ * IF gamit ka ng equals() method
+ * pagpumasok setProperty and driver = new ChromeDriver(), ito na yung lagi natin ginagawa
  */
 public class Base {
 
