@@ -21,5 +21,9 @@ public class Homepage extends Base{
         LandingPage landingPage = new LandingPage(driver);
         landingPage.getLogin().click();
 
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.getEmail().sendKeys("owell@example.com");
+        loginPage.getPassword().sendKeys("password123");
+
     }
 }

@@ -14,6 +14,7 @@ public class LandingPage {
     WebDriver driver;
 
     By signIn = By.cssSelector("[class='fa fa-lock fa-lg']");
+//    By signIn = By.cssSelector("a[href='sign_in']");
 
     public LandingPage(WebDriver driver){
         this.driver = driver;
