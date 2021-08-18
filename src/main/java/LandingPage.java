@@ -14,7 +14,7 @@ public class LandingPage {
     WebDriver driver;
 
     By signIn = By.cssSelector("[class='fa fa-lock fa-lg']");
-//    By signIn = By.cssSelector("a[href='sign_in']");
+    By textFeaturedCourses = By.cssSelector("div.text-center>h2");
 
     public LandingPage(WebDriver driver){
         this.driver = driver;
@@ -24,7 +24,9 @@ public class LandingPage {
         return driver.findElement(signIn);
     }
 
-
+    public WebElement gettextFeaturedCourses(){
+        return driver.findElement(textFeaturedCourses);
+    }
 
 
 }

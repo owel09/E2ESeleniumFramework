@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Homepage extends Base{
 
     @Test (dataProvider = "getData")
-    public void basePageNavigation(String email, String password) throws IOException {
+    public void LoginPageNavigation(String email, String password) throws IOException {
 
         //tinype muna yung initializeBrowser()
         //tapos nilagyan ng driver = kasi ang nirereturn ng initializeBrowser is driver
