@@ -11,6 +11,8 @@ public class LoginPage {
 
     By email = By.cssSelector("input#user_email");
     By password = By.cssSelector("input#user_password");
+    By submit = By.cssSelector("input[type='submit']");
+
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -22,6 +24,10 @@ public class LoginPage {
 
     public WebElement getPassword(){
         return driver.findElement(password);
+    }
+
+    public WebElement getSubmit(){
+        return driver.findElement(submit);
     }
 
 
