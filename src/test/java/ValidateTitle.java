@@ -1,12 +1,11 @@
 import org.testng.Assert;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 /*
  *Created by owel on 15/08/2021 7:53 PM
- * extends mo yung base para matawag mo yung driver at method initializeDriver
+ * sa Homepage iccheck kung displayed ba yung navigation bar at Featured Courses
  */
 public class ValidateTitle extends Base{
 
@@ -14,7 +13,7 @@ public class ValidateTitle extends Base{
     public void HomePageNavigation() throws IOException {
 
         driver = initializeDriver();
-        driver.get("http://www.qaclickacademy.com/");
+        driver.get(properties.getProperty("url"));
 
         LandingPage landingPage = new LandingPage(driver);
 
@@ -22,7 +21,7 @@ public class ValidateTitle extends Base{
         System.out.println(landingPage.gettextFeaturedCourses().getText());
         Assert.assertEquals(landingPage.gettextFeaturedCourses().getText(),"FEATURED COURSES");
         //check kung displayed ba yung Navigation bar sa taas
-        Assert.assertTrue(landingPage.driver.findElement(By.cssSelector("ul.nav.navbar-nav.navbar-right")).isDisplayed());
+        Assert.assertTrue(landingPage.getnavigationBar().isDisplayed());
 
 
     }

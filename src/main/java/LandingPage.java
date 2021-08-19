@@ -15,6 +15,7 @@ public class LandingPage {
 
     By signIn = By.cssSelector("[class='fa fa-lock fa-lg']");
     By textFeaturedCourses = By.cssSelector("div.text-center>h2");
+    By navigationBar = By.cssSelector("ul.nav.navbar-nav.navbar-right");
 
     public LandingPage(WebDriver driver){
         this.driver = driver;
@@ -26,6 +27,10 @@ public class LandingPage {
 
     public WebElement gettextFeaturedCourses(){
         return driver.findElement(textFeaturedCourses);
+    }
+
+    public WebElement getnavigationBar(){
+        return driver.findElement(navigationBar);
     }
 
 
