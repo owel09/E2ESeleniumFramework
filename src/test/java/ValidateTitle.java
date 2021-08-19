@@ -1,4 +1,5 @@
-import org.testng.annotations.DataProvider;
+import org.testng.Assert;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -19,6 +20,9 @@ public class ValidateTitle extends Base{
 
         //compare mo yung present text sa HomePage "Featured Courses". gamit ka ng Assert
         System.out.println(landingPage.gettextFeaturedCourses().getText());
+        Assert.assertEquals(landingPage.gettextFeaturedCourses().getText(),"FEATURED COURSES");
+        //check kung displayed ba yung Navigation bar sa taas
+        Assert.assertTrue(landingPage.driver.findElement(By.cssSelector("ul.nav.navbar-nav.navbar-right")).isDisplayed());
 
 
     }
