@@ -7,9 +7,9 @@ import java.io.IOException;
 
 /*
  *Created by owel on 15/08/2021 7:53 PM
- * sa Homepage iccheck kung yung Featured Courses ay as expected
+ * sa Homepage iccheck kung displayed ba yung navigation bar
  */
-public class ValidateTitle extends Base{
+public class ValidateNavigationBar extends Base{
 
     @BeforeTest
     public void initializer() throws IOException {
@@ -18,13 +18,12 @@ public class ValidateTitle extends Base{
     }
 
     @Test
-    public void homePageNavigationTitle()  {
+    public void homePageNavigationBar()  {
 
         LandingPage landingPage = new LandingPage(driver);
 
-        //compare mo yung present text sa HomePage "Featured Courses". gamit ka ng Assert
-        System.out.println(landingPage.gettextFeaturedCourses().getText());
-        Assert.assertEquals(landingPage.gettextFeaturedCourses().getText(),"FEATURED COURSES");
+        //check kung displayed ba yung Navigation bar sa taas
+        Assert.assertTrue(landingPage.getnavigationBar().isDisplayed());
 
     }
 

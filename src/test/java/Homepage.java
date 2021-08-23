@@ -1,3 +1,5 @@
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,23 +15,25 @@ import java.io.IOException;
  */
 public class Homepage extends Base{
 
-    @Test (dataProvider = "getData")
-    public void LoginPageNavigation(String email, String password) throws IOException {
-
+    @BeforeTest
+    public void initializer() throws IOException {
         /*tinype muna yung initializeDriver()
-        *tapos nilagyan ng driver = kasi ang nirereturn ng initializeDriver is driver
-        *galing yung driver sa Base na na-ideclare as public para maaccess dito sa bagong class
-        *kailangan mo to para matawag mo yung driver sa base. initial step yan
+         *tapos nilagyan ng driver = kasi ang nirereturn ng initializeDriver is driver
+         *galing yung driver sa Base na na-ideclare as public para maaccess dito sa bagong class
+         *kailangan mo to para matawag mo yung driver sa base. initial step yan
          */
         driver = initializeDriver();
 
         //para hindi lang hardcoded yung url
         driver.get(properties.getProperty("url"));
 
-
         //yung driver dito galing yung value sa base. extends kasi kaya nagamit ko din dito at pinass sa LandingPage
         LandingPage landingPage = new LandingPage(driver);
         landingPage.getLogin().click();
+    }
+
+    @Test (dataProvider = "getData")
+    public void loginPageNavigation(String email, String password)  {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.getEmail().sendKeys(email);
@@ -37,6 +41,12 @@ public class Homepage extends Base{
         loginPage.getSubmit().click();
 
     }
+
+    @AfterTest
+    public void teardown(){
+        driver.close();
+    }
+
 
     @DataProvider
     public Object[][] getData(){

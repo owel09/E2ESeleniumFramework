@@ -1,0 +1,11 @@
+<suite name = "E2E QA academy">
+
+    <test name = "Login">
+        <classes>
+        <class name = "Homepage"/>
+        <class name = "ValidateNavigationBar"/>
+        <class name = "ValidateTitle"/>
+        </classes>
+    </test>
+
+</suite>
