@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -15,6 +17,8 @@ import java.io.IOException;
  */
 public class Homepage extends Base{
 
+    private static Logger log = LogManager.getLogger(Homepage.class.getName());
+
     @BeforeTest
     public void initializer() throws IOException {
         /*tinype muna yung initializeDriver()
@@ -30,7 +34,9 @@ public class Homepage extends Base{
         //yung driver dito galing yung value sa base. extends kasi kaya nagamit ko din dito at pinass sa LandingPage
         LandingPage landingPage = new LandingPage(driver);
         landingPage.getLogin().click();
+        log.debug("Clicked Login button");
     }
+
 
     @Test (dataProvider = "getData")
     public void loginPageNavigation(String email, String password)  {
