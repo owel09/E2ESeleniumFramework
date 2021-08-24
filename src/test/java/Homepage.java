@@ -27,16 +27,18 @@ public class Homepage extends Base{
          *kailangan mo to para matawag mo yung driver sa base. initial step yan
          */
         driver = initializeDriver();
+        log.info("Driver is initialized");
 
         //para hindi lang hardcoded yung url
         driver.get(properties.getProperty("url"));
+        log.info("Navigated to Homepage");
 
         //yung driver dito galing yung value sa base. extends kasi kaya nagamit ko din dito at pinass sa LandingPage
         LandingPage landingPage = new LandingPage(driver);
         landingPage.getLogin().click();
-        log.debug("Clicked Login button");
-    }
+        log.info("Login button is clicked");
 
+    }
 
     @Test (dataProvider = "getData")
     public void loginPageNavigation(String email, String password)  {
@@ -52,7 +54,6 @@ public class Homepage extends Base{
     public void teardown(){
         driver.close();
     }
-
 
     @DataProvider
     public Object[][] getData(){

@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,10 +13,14 @@ import java.io.IOException;
  */
 public class ValidateNavigationBar extends Base{
 
+    private static Logger log = LogManager.getLogger(ValidateNavigationBar.class.getName());
+
     @BeforeTest
     public void initializer() throws IOException {
         driver = initializeDriver();
+        log.info("Driver is initialized");
         driver.get(properties.getProperty("url"));
+        log.info("Navigated to Homepage");
     }
 
     @Test
@@ -24,6 +30,7 @@ public class ValidateNavigationBar extends Base{
 
         //check kung displayed ba yung Navigation bar sa taas
         Assert.assertTrue(landingPage.getnavigationBar().isDisplayed());
+        log.info("Navigation bar is displayed");
 
     }
 
