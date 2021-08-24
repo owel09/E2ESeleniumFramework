@@ -1,5 +1,6 @@
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,6 +13,8 @@ import java.io.IOException;
  * sa Homepage iccheck kung yung Featured Courses ay as expected
  */
 public class ValidateTitle extends Base{
+
+    WebDriver driver;
 
     private static Logger log = LogManager.getLogger(ValidateTitle.class.getName());
 

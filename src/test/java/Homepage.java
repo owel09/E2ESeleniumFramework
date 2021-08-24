@@ -1,5 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -11,11 +12,14 @@ import java.io.IOException;
  *Created by owel on 15/08/2021 7:53 PM
  * 3 beses maglologin sa qaacademy pero using dummy account, nakaintegrate yung DataProvider at data.properties
  * extends mo yung base para matawag mo yung driver at method initializeDriver
+ * declare Webdriver locally para kung magrun ka ng parallel di magfafail
  * fundamental format to initialDriver at call url. Basic yan at dapat kabisado mo na
  * driver = initializeDriver();
  * driver.get(properties.getProperty("url"));
  */
 public class Homepage extends Base{
+
+    WebDriver driver;
 
     private static Logger log = LogManager.getLogger(Homepage.class.getName());
 
