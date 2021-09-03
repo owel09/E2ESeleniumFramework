@@ -34,7 +34,6 @@ public class ValidateTitle extends Base{
         LandingPage landingPage = new LandingPage(driver);
 
         //compare mo yung present text sa HomePage "Featured Courses". gamit ka ng Assert
-        System.out.println(landingPage.gettextFeaturedCourses().getText());
         Assert.assertEquals(landingPage.gettextFeaturedCourses().getText(),"FEATURED COURSES");
         log.info("Successfully validated text");
 

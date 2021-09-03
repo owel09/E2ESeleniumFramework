@@ -1,6 +1,8 @@
 <suite name = "E2E QA academy" parallel = "tests">
+    <listeners>
+        <listener class-name="Listener"/>
 
-<!--    mas maganda makakahiwalay sila ng test para iclose nya agad yung browser after magrun-->
+        <!--    mas maganda makakahiwalay sila ng test para iclose nya agad yung browser after magrun-->
     <test name = "Login">
         <classes>
         <class name = "Homepage"/>
@@ -18,5 +20,8 @@
             <class name = "ValidateTitle"/>
         </classes>
     </test>
+
+
+    </listeners>
 
 </suite>
