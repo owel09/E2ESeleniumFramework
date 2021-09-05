@@ -55,21 +55,25 @@ public class Base {
         return driver;
     }
 
-    public void takeScreenshot(String testCaseName) throws IOException {
-        //why TakeScreenshot should be typecasted? https://www.youtube.com/watch?v=I2Dc6TOzPVQ
-        //initially yung driver driver dito walang life, dapat nasa actual test siya
+    public void getScreenShotPath(String testCaseName, WebDriver driver) throws IOException {
+        /*why TakeScreenshot should be typecasted? https://www.youtube.com/watch?v=I2Dc6TOzPVQ
+        initially yung driver dito walang life, dapat nasa actual test siya
+        */
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 
         //source - is the file that contains the error pero nasa virtual pa siya
         File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
-        //user.dir - ito na agad yung current location ng project mo, tapos gumawa lang ng folder reports
-        //pass the file name of the failing test
-        String destinationFile = System.getProperty("user.dir")+"\\reports\\"+testCaseName;
+        /*user.dir - ito na agad yung current location ng project mo, tapos gumawa lang ng folder reports
+        pass the file name of the failing test
+        */
+        String destinationFile = System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
 
         //FileUtils para mapunta yung source sa local system natin
         FileUtils.copyFile(source,new File(destinationFile));
 
     }
+
+
 
 }
