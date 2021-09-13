@@ -1,4 +1,4 @@
-<suite name = "E2E QA academy" parallel = "tests">
+<suite name = "E2E QA academy">
     <listeners>
         <listener class-name="Listener"/>
 
