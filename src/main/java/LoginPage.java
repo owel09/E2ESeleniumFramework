@@ -12,6 +12,7 @@ public class LoginPage {
     By email = By.cssSelector("input#user_email");
     By password = By.cssSelector("input#user_password");
     By submit = By.cssSelector("input[type='submit']");
+    By forgotPassword = By.cssSelector("[href*='password/new']");
 
 
     public LoginPage(WebDriver driver){
@@ -28,6 +29,12 @@ public class LoginPage {
 
     public WebElement getSubmit(){
         return driver.findElement(submit);
+    }
+
+    public ForgotPasswordPage getForgotPassword(){
+        driver.findElement(forgotPassword).click();
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
+        return forgotPasswordPage;
     }
 
 
