@@ -33,23 +33,32 @@ public class Listener extends Base implements ITestListener {
      */
     ExtentTest extentTest;
 
+    /*
+    para sa parallel run at di mapatungan yung extentTest
+     */
+    ThreadLocal<ExtentTest> threadLocalExtentTest = new ThreadLocal<ExtentTest>();
+
+
     @Override
     public void onTestStart(ITestResult result) {
         //result.getMethod().getMethodName() -  yung method name yung magiging pangalan ng test sa report
         extentTest = extentReportsListener.createTest(result.getMethod().getMethodName());
+        threadLocalExtentTest.set(extentTest);
+
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        extentTest.log(Status.PASS,"Test Passed");
+        //threadLocalExtentTest.get() - para maging thread safe
+        threadLocalExtentTest.get().log(Status.PASS,"Test Passed");
     }
 
     @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
 
-        //log fails in the report
-        extentTest.fail(result.getThrowable());
+        //result.getThrowable() - log fails in the report
+        threadLocalExtentTest.get().fail(result.getThrowable());
 
         WebDriver driver = null;
 
@@ -66,12 +75,11 @@ public class Listener extends Base implements ITestListener {
         lalabas yung try catch as required solution
          */
         try {
-            getScreenShotPath(testCaseMethodName, driver);
+            threadLocalExtentTest.get().addScreenCaptureFromPath(getScreenShotPath(testCaseMethodName, driver),result.getMethod().getMethodName());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        ITestListener.super.onTestFailure(result);
         System.out.println("FAILED" + result.getName());
     }
 

@@ -55,7 +55,7 @@ public class Base {
         return driver;
     }
 
-    public void getScreenShotPath(String testCaseName, WebDriver driver) throws IOException {
+    public String getScreenShotPath(String testCaseName, WebDriver driver) throws IOException {
         /*why TakeScreenshot should be typecasted? https://www.youtube.com/watch?v=I2Dc6TOzPVQ
         initially yung driver dito walang life, dapat nasa actual test siya
         */
@@ -71,9 +71,7 @@ public class Base {
 
         //FileUtils para mapunta yung source sa local system natin
         FileUtils.copyFile(source,new File(destinationFile));
+        return destinationFile;
 
     }
-
-
-
 }
