@@ -23,8 +23,8 @@ public class Homepage extends Base{
 
     private static Logger log = LogManager.getLogger(Homepage.class.getName());
 
-    @BeforeTest
-    public void initializer() throws IOException {
+    @Test (dataProvider = "getData")
+    public void loginPageNavigation(String email, String password) throws IOException {
         /*tinype muna yung initializeDriver()
          *tapos nilagyan ng driver = kasi ang nirereturn ng initializeDriver is driver
          *galing yung driver sa Base na na-ideclare as public para maaccess dito sa bagong class
@@ -37,17 +37,14 @@ public class Homepage extends Base{
         driver.get(properties.getProperty("url"));
         log.info("Navigated to Homepage");
 
-        //yung driver dito galing yung value sa base. extends kasi kaya nagamit ko din dito at pinass sa LandingPage
+        /*ganito yung style ng pag-open ng page
+        driver - galing sa Base class, using extends kaya nagamit dito need to pass sa LandingPage
+         */
         LandingPage landingPage = new LandingPage(driver);
-        landingPage.getLogin().click();
+
+        //improved getLogin() kasi nasa loob nya na yung pagclick at pagopen ng LoginPage
+        LoginPage loginPage = landingPage.getLogin();
         log.info("Login button is clicked");
-
-    }
-
-    @Test (dataProvider = "getData")
-    public void loginPageNavigation(String email, String password)  {
-
-        LoginPage loginPage = new LoginPage(driver);
         loginPage.getEmail().sendKeys(email);
         loginPage.getPassword().sendKeys(password);
         loginPage.getSubmit().click();

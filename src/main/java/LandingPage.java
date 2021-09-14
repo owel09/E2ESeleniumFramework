@@ -21,8 +21,12 @@ public class LandingPage {
         this.driver = driver;
     }
 
-    public WebElement getLogin(){
-        return driver.findElement(signIn);
+    //improved getLogin, clicking login button and giving the next page object para maccess yung methods ng LoginPage
+    public LoginPage getLogin(){
+
+        driver.findElement(signIn).click();
+        LoginPage loginPage = new LoginPage(driver);
+        return loginPage;
     }
 
     public WebElement gettextFeaturedCourses(){
