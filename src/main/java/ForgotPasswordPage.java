@@ -13,8 +13,8 @@ public class ForgotPasswordPage {
         this.driver = driver;
     }
 
-    By email = By.cssSelector("[id='user_email']");
-    By sendMeInstruction = By.cssSelector("input[type='submit']");
+    private By email = By.cssSelector("[id='user_email']");
+    private By sendMeInstruction = By.cssSelector("input[type='submit']");
 
     public WebElement getEmail()
     {
