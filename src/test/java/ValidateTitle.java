@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ValidateTitle extends Base{
 
     WebDriver driver;
-
+    LandingPage landingPage;
     private static Logger log = LogManager.getLogger(ValidateTitle.class.getName());
 
     @BeforeTest
@@ -31,10 +31,19 @@ public class ValidateTitle extends Base{
     @Test
     public void homePageNavigationTitle()  {
 
-        LandingPage landingPage = new LandingPage(driver);
+        landingPage = new LandingPage(driver);
 
         //compare mo yung present text sa HomePage "Featured Courses". gamit ka ng Assert
         Assert.assertEquals(landingPage.gettextFeaturedCourses().getText(),"FEATURED COURSES");
+        log.info("Successfully validated text");
+
+    }
+
+
+    @Test
+    public void homePageMainIconValidation(){
+        landingPage = new LandingPage(driver);
+        Assert.assertEquals(landingPage.getmailIcon().getText(),"info@qaclickacademy.com");
         log.info("Successfully validated text");
 
     }

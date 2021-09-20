@@ -16,6 +16,7 @@ public class LandingPage {
     private By signIn = By.cssSelector("[class='fa fa-lock fa-lg']");
     private By textFeaturedCourses = By.cssSelector("div.text-center>h2");
     public By navigationBar = By.cssSelector("ul.nav.navbar-nav.navbar-right");
+    private By mailIcon = By.cssSelector("a[href*='info@qaclickacademy.com']");
 
     public LandingPage(WebDriver driver){
         this.driver = driver;
@@ -35,6 +36,10 @@ public class LandingPage {
 
     public WebElement getnavigationBar(){
         return driver.findElement(navigationBar);
+    }
+
+    public WebElement getmailIcon(){
+        return driver.findElement(mailIcon);
     }
 
 
