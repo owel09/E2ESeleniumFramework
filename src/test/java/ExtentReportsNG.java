@@ -1,6 +1,7 @@
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+
 /*
  *Created by owel on 13/09/2021 9:55 AM
  * declare static extentReports globally kasi gagamitin yan ng ibang class, magkakaerror din kasi yung mga extentReports sa loob ng method
